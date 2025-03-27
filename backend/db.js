@@ -11,3 +11,10 @@ const userSchema = new Schema({
     password: String,
     email: {type : String, unique : true}
 })
+
+const userModel = mongoose.model("users", userSchema);
+
+
+module.exports = {
+    userModel
+}
