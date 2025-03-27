@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const {userModel} = require("../db");
-
+const {authUser} = require("../middlewares/user")
 const jwt = require("jsonwebtoken");
-const {z} = require("zod");
+const {z} = require("zod"); // for zod verification
 
 const jwt_pass = process.env.jwt_pass;
 
