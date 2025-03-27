@@ -6,7 +6,7 @@ const mongoUrl = process.env.mongo_url;
 mongoose.connect(mongoUrl);
 
 const userSchema = new Schema({
-    id: ObjectID,
+   
     name: String,
     password: String,
     email: {type : String, unique : true}

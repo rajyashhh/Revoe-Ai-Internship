@@ -11,7 +11,7 @@ const userRouter = Router();
 
 userRouter.post("/signup", async(req,res)=>{
     const requiredBody = z.object({
-        email: z.string().min(7).maxx(100).email(),
+        email: z.string().min(7).max(100).email(),
         password : z.string().min(5, "Password must be atleast 5 charachters long").max(100, "Password is long too store"),
         name : z.string().min(3)
     })
@@ -21,6 +21,7 @@ userRouter.post("/signup", async(req,res)=>{
             message : "Incorrect Format",
             error : parsedDatawithSuccess.error
         })
+        return;
     }
     const email = req.body.email;
     const password = req.body.password;
@@ -29,9 +30,10 @@ userRouter.post("/signup", async(req,res)=>{
 
     const existingUser = await userModel.findOne({email : email});
     if(existingUser){
-        res.json({
+        return res.json({
             message : "User with this Email Id already exists!"
         })
+
     }
     let errorThrown = false;
     try{
