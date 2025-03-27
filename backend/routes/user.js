@@ -57,6 +57,32 @@ userRouter.post("/signup", async(req,res)=>{
     }
 })
 
+userRouter.post("/login", async(req,res)=>{
+    const email = req.body.email;
+    const emailVerified = await userModel.findOne({email : email});
+    if(!emailVerified){
+        res.json({
+            message : "No user found with this email id!"
+        })
+        return;
+    }
+    const password = req.body.password;
+    const passwordMatched = await bcrypt.compare(password, emailVerified.password);
+    if(passwordMatched){
+        const token = await jwt.sign({id: emailVerified._id}, jwt_pass);
+        res.json({
+            message : "You are successfully loggd in!",
+            token : token
+        })
+    }
+    else{
+        res.json({
+            message : "Password does not match, Try again!"
+        })
+    }
+})
+
+
 module.exports = {
     userRouter : userRouter
 }
