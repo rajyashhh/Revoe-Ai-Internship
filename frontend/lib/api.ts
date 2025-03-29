@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/user"; // Change the port if needed
+const API_URL = "http://localhost:4000/user"; // Change the port if needed
 
 // Create axios instance with interceptors
 const api = axios.create({
