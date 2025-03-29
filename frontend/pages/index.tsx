@@ -12,7 +12,21 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+export interface ColumnDefinition {
+  name: string;
+  type: 'Text' | 'Date' | 'Number';
+}
 
+export interface TableConfig {
+  id: number;
+  columns: ColumnDefinition[];
+  sheetUrl: string;
+  tabName: string;
+}
+
+export interface SheetRow {
+  [key: string]: string | number | null;
+}
 export default function Home() {
   return (
     <div className={`${geistSans.variable} ${geistMono.variable}`}>

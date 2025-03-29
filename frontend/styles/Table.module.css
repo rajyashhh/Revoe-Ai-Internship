@@ -1,0 +1,34 @@
+.googleSheetsTable h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+.tableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableContainer th, 
+.tableContainer td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.tableContainer th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.loading, .error {
+  padding: 20px;
+  text-align: center;
+}
+
+.error {
+  color: #d32f2f;
+} 
